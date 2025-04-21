@@ -21,7 +21,6 @@ class DatabaseHelper {
     return await openDatabase(path, version: 2, onCreate: _onCreate);
   }
 
-  // Hàm tạo bảng
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
       CREATE TABLE $tableName (
@@ -31,7 +30,6 @@ class DatabaseHelper {
     ''');
   }
 
-  // Hàm thêm ghi chú
   Future<int> addNote(Note note) async {
     final db = await database;
     return await db.insert(tableName, note.toMap());
